@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reportes - Sistema Municipal</title>
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Portal Ciudadano</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#">Mis Reportes</a></li>
+                    <li><a href="index.html">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="dashboard-content">
+            <header class="top-bar">
+                <div class="user-info">
+                    <h1>Mis Reportes</h1>
+                </div>
+            </header>
+            <section class="overview-stats">
+                <div class="auth-card" style="width: 100%; max-width: 600px; margin: 0 auto; margin-bottom: 30px;">
+                    <h2>Realizar Nuevo Reporte</h2>
+                    <form id="report-form">
+                        <div class="form-group">
+                            <label for="report-type">Tipo de Reporte</label>
+                            <select id="report-type" name="report-type" required>
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="vial">Reporte Vial</option>
+                                <option value="servicio-publico">Servicio Público</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Ubicación</label>
+                            <input type="text" id="location" name="location" required
+                                placeholder="Ej: Calle 10 con Carrera 5">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descripción del Problema</label>
+                            <textarea id="description" name="description" required
+                                placeholder="Describa el problema detalladamente..." rows="4"
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                        </div>
+                        <button type="submit" id="submit-report" class="btn-primary">Enviar Reporte</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="recent-activity">
+                <h2>Historial de Reportes</h2>
+                <div id="reports-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Ubicación</th>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-list">
+                            <!-- Los reportes se cargarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/reporte.js"></script>
+    <script type="module" src="../js/misReportes.js"></script>
+</body>
+
+</html>

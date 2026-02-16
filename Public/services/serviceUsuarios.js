@@ -16,7 +16,6 @@ async function postData(usuario) {
         return null;
     }
 }
-export { postData }
 
 
 
@@ -35,7 +34,36 @@ async function getdata() {
     }
 }
 
-export { getdata }
+async function postReporte(reporte) {
+    try {
+        const peticion = await fetch("http://localhost:1212/reportes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reporte)
+        })
+        const respuesta = await peticion.json()
+        console.log(respuesta);
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function getReportes() {
+    try {
+        const respuestaServidor = await fetch("http://localhost:1212/reportes")
+        const datosReportes = await respuestaServidor.json()
+        return datosReportes
+    } catch (error) {
+        console.log(error);
+        return []
+    }
+}
+
+export { postData, getdata, postReporte, getReportes }
 
 
 
