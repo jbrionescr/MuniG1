@@ -10,27 +10,33 @@ async function postData(usuario) {
         })
         const respuesta = await peticion.json()
         console.log(respuesta);
+        return respuesta;
     } catch (error) {
         console.log(error);
+        return null;
     }
 }
-export {postData}
+export { postData }
 
 
 
 // get 
 
 async function getdata() {
-    try{
-    const respuestaServidor = await fetch("http://localhost:1212/usuarios")
+    try {
+        const respuestaServidor = await fetch("http://localhost:1212/usuarios")
 
-    const datosUsuarios = await respuestaServidor.json()
-    console.log(datosUsuarios);
-    return datosUsuarios
+        const datosUsuarios = await respuestaServidor.json()
+        console.log(datosUsuarios);
+        return datosUsuarios
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
-catch(error){
-    console.log(error);
-}
-}
- 
-export {getdata}
+
+export { getdata }
+
+
+
+/// 
