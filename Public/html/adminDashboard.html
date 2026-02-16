@@ -50,29 +50,20 @@
             </section>
 
             <section class="recent-activity">
-                <h2>Trámites Recientes</h2>
+                <h2>Gestión de Reportes Municipales</h2>
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Usuario</th>
-                            <th>Tipo de Trámite</th>
-                            <th>Fecha</th>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Ubicación</th>
+                            <th>Descripción</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Juan Pérez Vargas</td>
-                            <td>Licencia de Construcción</td>
-                            <td>15/02/2026</td>
-                            <td><span class="status pending">Pendiente</span></td>
-                        </tr>
-                        <tr>
-                            <td>María García</td>
-                            <td>Pago de Predial</td>
-                            <td>12/02/2026</td>
-                            <td><span class="status completed">Completado</span></td>
-                        </tr>
+                    <tbody id="reports-tbody">
+                        <!-- Los reportes se cargarán dinámicamente aquí -->
                     </tbody>
                 </table>
             </section>
@@ -80,4 +71,5 @@
     </div>
 </body>
 <script type="module" src="../js/admistrador.js"></script>
+
 </html>

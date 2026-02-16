@@ -63,7 +63,48 @@ async function getReportes() {
     }
 }
 
-export { postData, getdata, postReporte, getReportes }
+async function deleteReporte(id) {
+    try {
+        const peticion = await fetch(`http://localhost:1212/reportes/${id}`, {
+            method: "DELETE"
+        })
+        const respuesta = await peticion.json()
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function updateReporteStatus(id, estado) {
+    try {
+        const peticion = await fetch(`http://localhost:1212/reportes/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ estado })
+        })
+        const respuesta = await peticion.json()
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function getReporteById(id) {
+    try {
+        const respuestaServidor = await fetch(`http://localhost:1212/reportes/${id}`)
+        const datosReporte = await respuestaServidor.json()
+        return datosReporte
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export { postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById }
 
 
 
