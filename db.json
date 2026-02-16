@@ -5,6 +5,20 @@
       "nombreCompleto": "Alejandro Mendoza",
       "email": "alejandronicmen@gmail.com",
       "password": "12345678"
+    },
+    {
+      "id": "fe51",
+      "nombreCompleto": "Rachell Luna",
+      "email": "rachelluna@gmail.com",
+      "password": "12345678",
+      "role": "ciudadano"
+    },
+    {
+      "id": "b4cc",
+      "nombreCompleto": "Joaquin Aguilar",
+      "email": "joakoaguilar@gmail.com",
+      "password": "12345678",
+      "role": "administrador"
     }
   ]
 }
