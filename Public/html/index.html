@@ -2,10 +2,15 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Sistema Municipal del Sur</title>
-    <link rel="stylesheet" href="../styles/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Sistema Municipal del Sur</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>  
@@ -29,29 +34,89 @@
                 <a href="../html/login.html" class="btn-secondary">Ya tengo cuenta</a>
             </div>
         </section>
+<body>
+  <div class="encabezado">
+    <img src="/Public/img/1771259929645.png" width="100px" height="100px" alt="">
+    <h1 class="text-gradient">Municipalidad del Sur</h1>
+  </div>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                TRAMITES
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    </div>
+    </div>
+    </nav>
+  </header>
 
-        <section id="features">
-            <h2>Nuestros Servicios</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Trámites Online</h3>
-                    <p>Realiza tus solicitudes desde la comodidad de tu casa.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Atención Ciudadana</h3>
-                    <p>Soporte directo para resolver tus dudas.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Transparencia</h3>
-                    <p>Acceso a la información municipal actualizada.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main>
+    <section id="hero">
+      <h1>Bienvenido al Sistema de Gestión Municipal</h1>
+      <p>Accede a tus trámites y servicios de forma rápida y sencilla.</p>
+      <div class="cta-buttons">
+        <a href="register.html" class="btn-primary">Empezar ahora</a>
+        <a href="login.html" class="btn-secondary">Ya tengo cuenta</a>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Sistema Municipal. Todos los derechos reservados.</p>
-    </footer>
+    <section id="features">
+      <h2>Nuestros Servicios</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Trámites Online</h3>
+          <p>Realiza tus solicitudes desde la comodidad de tu casa.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Atención Ciudadana</h3>
+          <p>Soporte directo para resolver tus dudas.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Transparencia</h3>
+          <p>Acceso a la información municipal actualizada.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sistema Municipal. Todos los derechos reservados.</p>
+  </footer>
 </body>
  <script type="module" src="../js/index.js"></script>
 </html>
