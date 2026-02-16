@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrador - Sistema Municipal</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <!-- Iconos sugeridos (ejemplo con FontAwesome) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Usuarios</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Trámites</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <header class="top-bar">
+                <div class="user-info">
+                    <span>Bienvenido, <strong>Administrador</strong></span>
+                </div>
+            </header>
+
+            <section class="overview-stats">
+                <div class="stat-card">
+                    <h3>Total Usuarios</h3>
+                    <p class="number">1,250</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Trámites Pendientes</h3>
+                    <p class="number">45</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Ingresos Hoy</h3>
+                    <p class="number">$2,400</p>
+                </div>
+            </section>
+
+            <section class="recent-activity">
+                <h2>Trámites Recientes</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Tipo de Trámite</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Juan Pérez Vargas</td>
+                            <td>Licencia de Construcción</td>
+                            <td>15/02/2026</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                        </tr>
+                        <tr>
+                            <td>María García</td>
+                            <td>Pago de Predial</td>
+                            <td>12/02/2026</td>
+                            <td><span class="status completed">Completado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
