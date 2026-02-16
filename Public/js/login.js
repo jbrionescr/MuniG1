@@ -1,3 +1,27 @@
+import { getdata } from "../services/serviceUsuarios.js"   
+
+const fullname = document.getElementById("fullname")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const btnprimary = document.getElementById("btnprimary")
+
+
+async function obtenerUsuarios() {
+    const usuariosRegistrados = await  getdata()
+
+    const usuarioValido = usuariosRegistrados.find((usuario)=>usuario.email === email.value && usuario.password === password.value)
+    console.log(usuarioValido)
+
+    if (usuarioValido) {
+        alert("inicia sesion")
+        return
+    }else{
+        alert("Credenciales incorrectas")
+    }
+
+}
+
+btnprimary.addEventListener("click", obtenerUsuarios)
+
+
+

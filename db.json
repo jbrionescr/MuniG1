@@ -1,3 +1,10 @@
 {
-    "Usuarios": []
+  "usuarios": [
+    {
+      "id": "8ed4",
+      "nombreCompleto": "Alejandro Mendoza",
+      "email": "alejandronicmen@gmail.com",
+      "password": "12345678"
+    }
+  ]
 }
