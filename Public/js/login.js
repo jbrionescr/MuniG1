@@ -6,9 +6,11 @@ const password = document.getElementById("password")
 const btnprimary = document.getElementById("btnprimary")
 
 
-async function obtenerUsuarios() {
+async function obtenerUsuarios(e) {
+    e.preventDefault()
     const usuariosRegistrados = await getdata()
-
+    console.log("aaaa");
+    
     const usuarioValido = usuariosRegistrados.find((usuario) => usuario.email === email.value && usuario.password === password.value)
     console.log(usuarioValido)
 

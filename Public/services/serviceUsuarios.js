@@ -25,7 +25,6 @@ export { postData }
 async function getdata() {
     try {
         const respuestaServidor = await fetch("http://localhost:1212/usuarios")
-
         const datosUsuarios = await respuestaServidor.json()
         console.log(datosUsuarios);
         return datosUsuarios
