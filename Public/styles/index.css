@@ -45,15 +45,32 @@ main {
 }
 /* Carrucel de index */
 .imagenCarrucel1 {
-  width: 35%;
-  height: 35%;
+  width: 30%;
+  height: 30%;
   object-fit: cover;
   justify-content: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
+.imagenCarrucel2 {
+  width: 53%;
+  height: 53%;
+  object-fit: cover;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imagenCarrucel3 {
+  width: 45%;
+  height: 45%;
+  object-fit: cover;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -93,4 +110,15 @@ main {
 
 .btn-delete:hover {
     background-color: #c0392b;
+}
+/* Bienvenido al Sistema de Gestión Municipal */
+.titulo2 {
+background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+/* parte inferior de pagina */
+.footer {
+  background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+text-align: center;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
