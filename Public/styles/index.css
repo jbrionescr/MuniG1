@@ -174,13 +174,14 @@ main {
 
 .contact-item h4 {
     font-size: 1.1rem;
-    color: var(--p-700);
+    color: blue;
     margin-bottom: 0.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .contact-item p {
     margin: 0;
-    color: var(--text-main);
+    color: #020024;
     font-size: 0.95rem;
 }
 
