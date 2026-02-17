@@ -18,10 +18,9 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Usuarios</a></li>
-                    <li><a href="#"><i class="fas fa-file-alt"></i> Trámites</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                    <li class="active"><a href="#"><i class="fas fa-clipboard-list"></i> Gestión de Reportes</a></li>
+                    <li><a href="#"><i class="fas fa-road"></i> Gestión de Proyectos Viales</a></li>
+                    <li><a href="#"><i class="fas fa-broom"></i> Gestión de Servicios Públicos</a></li>
                     <li><a href="../html/index.html"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
                 </ul>
             </nav>
@@ -40,16 +39,12 @@
                     <p class="number">1,250</p>
                 </div>
                 <div class="stat-card">
-                    <h3>Trámites Pendientes</h3>
-                    <p class="number">45</p>
-                </div>
-                <div class="stat-card">
                     <h3>Ingresos Hoy</h3>
                     <p class="number">$2,400</p>
                 </div>
             </section>
 
-            <section class="recent-activity">
+            <section id="reports-section" class="recent-activity">
                 <h2>Gestión de Reportes Municipales</h2>
                 <table class="data-table">
                     <thead>
@@ -64,6 +59,135 @@
                     </thead>
                     <tbody id="reports-tbody">
                         <!-- Los reportes se cargarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="projects-section" class="recent-activity" style="display: none;">
+                <h2>Gestión de Proyectos Viales</h2>
+
+                <div class="auth-card"
+                    style="width: 100%; max-width: 800px; margin: 0 auto 30px auto; background: white; padding: 20px; border-radius: 8px;">
+                    <h3 id="project-form-title">Crear Nuevo Proyecto</h3>
+                    <form id="project-form">
+                        <input type="hidden" id="project-id">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Nombre del Proyecto</label>
+                                <input type="text" id="project-name" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Presupuesto</label>
+                                <input type="number" id="project-budget" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Fecha de Inicio</label>
+                                <input type="date" id="project-date" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Estado</label>
+                                <select id="project-status" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    <option value="Planificación">Planificación</option>
+                                    <option value="En Ejecución">En Ejecución</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                    <option value="Detenido">Detenido</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <label style="display: block; margin-bottom: 5px;">Descripción</label>
+                            <textarea id="project-desc" rows="3" required
+                                style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                        </div>
+                        <div style="margin-top: 20px; text-align: right;">
+                            <button type="button" id="btn-cancel-project"
+                                style="background: #95a5a6; color: white; border: none; padding: 8px 15px; border-radius: 4px; margin-right: 10px; display: none;">Cancelar</button>
+                            <button type="submit"
+                                style="background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 4px;">Guardar
+                                Proyecto</button>
+                        </div>
+                    </form>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Presupuesto</th>
+                            <th>Inicio</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projects-tbody">
+                        <!-- Proyectos dinámicos -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="services-section" class="recent-activity" style="display: none;">
+                <h2>Gestión de Servicios Públicos</h2>
+
+                <div class="auth-card"
+                    style="width: 100%; max-width: 800px; margin: 0 auto 30px auto; background: white; padding: 20px; border-radius: 8px;">
+                    <h3 id="service-form-title">Gestionar Servicio Público</h3>
+                    <form id="service-form">
+                        <input type="hidden" id="service-id">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Tipo de Servicio</label>
+                                <select id="service-type" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    <option value="Alumbrado Público">Alumbrado Público</option>
+                                    <option value="Mantenimiento de zonas verdes">Mantenimiento de zonas verdes</option>
+                                    <option value="Recolección de residuos">Recolección de residuos</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Responsable</label>
+                                <input type="text" id="service-responsible" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Estado del Mantenimiento</label>
+                                <input type="text" id="service-status" required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+                                    placeholder="Ej: Activo, Pendiente, En Progreso">
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <label style="display: block; margin-bottom: 5px;">Descripción</label>
+                            <textarea id="service-desc" rows="3" required
+                                style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                        </div>
+                        <div style="margin-top: 20px; text-align: right;">
+                            <button type="button" id="btn-cancel-service"
+                                style="background: #95a5a6; color: white; border: none; padding: 8px 15px; border-radius: 4px; margin-right: 10px; display: none;">Cancelar</button>
+                            <button type="submit"
+                                style="background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 4px;">Guardar
+                                Servicio</button>
+                        </div>
+                    </form>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Responsable</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="services-tbody">
+                        <!-- Servicios dinámicos -->
                     </tbody>
                 </table>
             </section>

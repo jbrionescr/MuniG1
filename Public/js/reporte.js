@@ -8,6 +8,14 @@ const descriptionInput = document.getElementById("description")
 async function handleReportSubmit(e) {
     e.preventDefault()
 
+    const loc = locationInput.value.trim()
+    const desc = descriptionInput.value.trim()
+
+    if (loc === "" || desc === "") {
+        alert("Por favor, complete la ubicación y la descripción")
+        return
+    }
+
     const reporte = {
         tipo: reportType.value,
         ubicacion: locationInput.value,

@@ -103,8 +103,108 @@ async function getReporteById(id) {
     }
 }
 
-export { postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById }
+// --- SERVICES PROYECTOS ---
 
+async function getProyectos() {
+    try {
+        const res = await fetch("http://localhost:1212/proyectos");
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
 
+async function createProyecto(data) {
+    try {
+        const res = await fetch("http://localhost:1212/proyectos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
 
-/// 
+async function updateProyecto(id, data) {
+    try {
+        const res = await fetch(`http://localhost:1212/proyectos/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function deleteProyecto(id) {
+    try {
+        const res = await fetch(`http://localhost:1212/proyectos/${id}`, {
+            method: "DELETE"
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+// --- SERVICES SERVICIOS PÚBLICOS ---
+
+async function getServicios() {
+    try {
+        const res = await fetch("http://localhost:1212/servicios");
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+async function createServicio(data) {
+    try {
+        const res = await fetch("http://localhost:1212/servicios", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function updateServicio(id, data) {
+    try {
+        const res = await fetch(`http://localhost:1212/servicios/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function deleteServicio(id) {
+    try {
+        const res = await fetch(`http://localhost:1212/servicios/${id}`, {
+            method: "DELETE"
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export { postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio } 
