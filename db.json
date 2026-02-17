@@ -4,7 +4,8 @@
       "id": "8ed4",
       "nombreCompleto": "Alejandro Mendoza",
       "email": "alejandronicmen@gmail.com",
-      "password": "12345678"
+      "password": "12345678",
+      "role": "ciudadano"
     },
     {
       "id": "fe51",
@@ -21,5 +22,24 @@
       "role": "administrador"
     }
   ],
-  "reportes": []
+  "reportes": [
+    {
+      "id": "1684",
+      "categoria": "Infraestructura Vial",
+      "tipo": "Baches",
+      "descripcion": "Hay un hueco",
+      "ubicacion": "San Rafael Abajo"
+    }
+  ],
+  "proyectos": [
+    {
+      "id": "c3e7",
+      "nombre": "Mantenimiento Vial red cantonal",
+      "presupuesto": "10000000",
+      "fechaInicio": "2026-02-18",
+      "estado": "En Ejecución",
+      "descripcion": "Se van a mejorar las carreteras del canton de Sur."
+    }
+  ],
+  "servicios": []
 }

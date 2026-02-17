@@ -10,7 +10,22 @@ const registerbutton = document.getElementById("registerbutton")
 async function registrarUsuario(e) {
     e.preventDefault()
 
-    if (password.value !== confirmpassword.value) {
+    const nameValue = fullname.value.trim()
+    const emailValue = email.value.trim()
+    const passValue = password.value.trim()
+    const confirmPassValue = confirmpassword.value.trim()
+
+    if (nameValue === "" || emailValue === "" || passValue === "" || confirmPassValue === "") {
+        alert("Todos los campos son obligatorios y no pueden estar vacíos")
+        return
+    }
+
+    if (passValue.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres")
+        return
+    }
+
+    if (passValue !== confirmPassValue) {
         alert("Las contraseñas no coinciden")
         return
     }

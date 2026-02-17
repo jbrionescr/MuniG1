@@ -9,6 +9,19 @@ async function obtenerUsuarios(event) {
     event.preventDefault() // Evita que la página se recargue
     console.log("Intentando iniciar sesión...")
 
+    const emailValue = email.value.trim()
+    const passwordValue = password.value.trim()
+
+    if (emailValue === "" || passwordValue === "") {
+        alert("Por favor, complete todos los campos.")
+        return
+    }
+
+    if (passwordValue.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres.")
+        return
+    }
+
     try {
         const usuariosRegistrados = await getdata()
         console.log("Usuarios recibidos del servidor:", usuariosRegistrados)
