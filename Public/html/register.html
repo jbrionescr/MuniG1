@@ -12,7 +12,7 @@
     <div class="auth-container">
         <header>
             <div class="logo">Municipalidad del Sur</div>
-            <a href="index.html" class="back-link">Volver al inicio</a>
+            <a href="../html/index.html" class="back-link">Volver al inicio</a>
         </header>
 
         <main>
@@ -34,17 +34,26 @@
                     </div>
                     <div class="form-group">
                         <label for="confirm-password">Confirmar Contraseña</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required
+                        <input type="password" id="confirmpassword" name="confirm-password" required
                             placeholder="••••••••">
                     </div>
-                    <button type="submit" class="btn-primary">Registrarse</button>
+                    <div class="form-group">
+                        <label for="role">Tipo de Usuario</label>
+                        <select id="role" name="role" required class="form-control">
+                            <option value="" disabled selected>Seleccione un rol</option>
+                            <option value="ciudadano">Ciudadano</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button id="registerbutton" type="submit" class="btn-primary">Registrarse</button>
                 </form>
                 <div class="auth-footer">
-                    ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a>
+                    ¿Ya tienes una cuenta? <a href="../html/login.html">Inicia sesión</a>
                 </div>
             </div>
         </main>
     </div>
 </body>
+<script type="module" src="../js/register.js"></script>
 
 </html>
