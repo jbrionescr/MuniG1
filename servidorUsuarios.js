@@ -95,6 +95,83 @@ app.post('/usuarios', (req, res) => {
     res.json(newUser);
 });
 
+// POST: Crear nuevo reporte
+app.post('/reportes', (req, res) => {
+    try {
+        const db = readDB();
+        const newReport = {
+            id: Date.now().toString(16),
+            fecha: new Date().toISOString(),
+            estado: 'Pendiente',
+            ...req.body
+        };
+        db.reportes = db.reportes || [];
+        db.reportes.push(newReport);
+        writeDB(db);
+        res.status(201).json(newReport);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al crear el reporte' });
+    }
+});
+
+// --- ENDPOINTS PROYECTOS VIALES ---
+
+// GET: Ver todos los proyectos
+app.get('/proyectos', (req, res) => {
+    try {
+        const db = readDB();
+        res.json(db.proyectos || []);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener proyectos' });
+    }
+});
+
+// POST: Crear proyecto
+app.post('/proyectos', (req, res) => {
+    try {
+        const db = readDB();
+        const newProject = {
+            id: Date.now().toString(16),
+            ...req.body
+        };
+        db.proyectos = db.proyectos || [];
+        db.proyectos.push(newProject);
+        writeDB(db);
+        res.status(201).json(newProject);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al crear proyecto' });
+    }
+});
+
+// PUT: Actualizar proyecto
+app.put('/proyectos/:id', (req, res) => {
+    try {
+        const db = readDB();
+        const index = db.proyectos.findIndex(p => p.id === req.params.id);
+        if (index !== -1) {
+            db.proyectos[index] = { ...db.proyectos[index], ...req.body };
+            writeDB(db);
+            res.json(db.proyectos[index]);
+        } else {
+            res.status(404).json({ error: 'Proyecto no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar proyecto' });
+    }
+});
+
+// DELETE: Eliminar proyecto
+app.delete('/proyectos/:id', (req, res) => {
+    try {
+        const db = readDB();
+        db.proyectos = db.proyectos.filter(p => p.id !== req.params.id);
+        writeDB(db);
+        res.json({ message: 'Proyecto eliminado' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar proyecto' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor de Usuarios y Reportes corriendo en http://localhost:${PORT}`);
 });

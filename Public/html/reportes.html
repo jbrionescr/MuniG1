@@ -27,16 +27,119 @@
                     <h1>Mis Reportes</h1>
                 </div>
             </header>
-            <section class="overview-stats">
-                <div class="auth-card" style="width: 100%; max-width: 600px; margin: 0 auto; text-align: center;">
-                    <h2>Bienvenido al Portal Ciudadano</h2>
-                    <p>Desde aquí puedes gestionar tus reportes municipales.</p>
-                    <div style="margin-top: 20px;">
-                        <a href="misReportes.html" class="btn-primary"
-                            style="text-decoration: none; display: inline-block;">Ir a Mis Reportes / Crear Reporte</a>
-                    </div>
+            <section class="report-form-section" style="padding: 20px; max-width: 800px; margin: 0 auto;">
+                <div class="auth-card"
+                    style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">Crear Nuevo Reporte</h2>
+                    <form id="reportForm">
+                        <div style="margin-bottom: 15px;">
+                            <label for="categoria"
+                                style="display: block; margin-bottom: 5px; font-weight: bold;">Categoría:</label>
+                            <select id="categoria" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="">Seleccione una categoría</option>
+                                <option value="Infraestructura Vial">Infraestructura Vial</option>
+                                <option value="Servicios Publicos">Servicios Públicos</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label for="tipo" style="display: block; margin-bottom: 5px; font-weight: bold;">Tipo de
+                                Reporte:</label>
+                            <select id="tipo" required disabled
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+                                <option value="">Seleccione una categoría primero</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label for="descripcion"
+                                style="display: block; margin-bottom: 5px; font-weight: bold;">Descripción:</label>
+                            <textarea id="descripcion" rows="4" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label for="ubicacion"
+                                style="display: block; margin-bottom: 5px; font-weight: bold;">Ubicación:</label>
+                            <input type="text" id="ubicacion" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+
+                        <div style="text-align: center;">
+                            <button type="submit"
+                                style="background-color: #3498db; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s;">Enviar
+                                Reporte</button>
+                        </div>
+                    </form>
                 </div>
             </section>
+
+            <script>
+                const categoriaSelect = document.getElementById('categoria');
+                const tipoSelect = document.getElementById('tipo');
+                const form = document.getElementById('reportForm');
+
+                const tiposPorCategoria = {
+                    'Infraestructura Vial': ['Baches', 'Señalizacion', 'Alcantarillado'],
+                    'Servicios Publicos': ['Alumbrado Publico', 'Mantenimiento de Zonas Verdes', 'Recoleccion de Residuos']
+                };
+
+                categoriaSelect.addEventListener('change', function () {
+                    const categoria = this.value;
+                    tipoSelect.innerHTML = '<option value="">Seleccione un tipo</option>';
+
+                    if (categoria && tiposPorCategoria[categoria]) {
+                        tiposPorCategoria[categoria].forEach(tipo => {
+                            const option = document.createElement('option');
+                            option.value = tipo;
+                            option.textContent = tipo;
+                            tipoSelect.appendChild(option);
+                        });
+                        tipoSelect.disabled = false;
+                        tipoSelect.style.backgroundColor = 'white';
+                    } else {
+                        tipoSelect.innerHTML = '<option value="">Seleccione una categoría primero</option>';
+                        tipoSelect.disabled = true;
+                        tipoSelect.style.backgroundColor = '#f9f9f9';
+                    }
+                });
+
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const reporteData = {
+                        categoria: categoriaSelect.value,
+                        tipo: tipoSelect.value,
+                        descripcion: document.getElementById('descripcion').value,
+                        ubicacion: document.getElementById('ubicacion').value
+                    };
+
+                    try {
+                        const response = await fetch('http://localhost:1212/reportes', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(reporteData)
+                        });
+
+                        if (response.ok) {
+                            alert('Reporte enviado con éxito');
+                            form.reset();
+                            tipoSelect.innerHTML = '<option value="">Seleccione una categoría primero</option>';
+                            tipoSelect.disabled = true;
+                            // Opcional: Redirigir a 'Mis Reportes'
+                            // window.location.href = 'misReportes.html';
+                        } else {
+                            alert('Error al enviar el reporte');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error de conexión con el servidor');
+                    }
+                });
+            </script>
         </main>
     </div>
 </body>
