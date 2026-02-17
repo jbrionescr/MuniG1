@@ -11,10 +11,11 @@ body {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.data-table th, .data-table td {
+.data-table th,
+.data-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -43,4 +44,35 @@ body {
 
 .btn-delete:hover {
     background-color: #c0392b;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+}
+
+.status-planificación {
+    background-color: #6c757d;
+}
+
+.status-en-ejecución {
+    background-color: #007bff;
+}
+
+.status-completado {
+    background-color: #28a745;
+}
+
+.status-suspendido {
+    background-color: #dc3545;
+}
+
+/* Dashboard Layout Enhancements */
+.sidebar-nav ul li.active a {
+    background-color: #34495e;
+    color: #3498db;
 }

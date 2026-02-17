@@ -81,7 +81,7 @@ app.delete('/reportes/:id', (req, res) => {
     }
 });
 
-// Endpoints para usuarios (necesarios para el funcionamiento actual)
+
 app.get('/usuarios', (req, res) => {
     const db = readDB();
     res.json(db.usuarios || []);
