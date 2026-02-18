@@ -230,6 +230,64 @@ app.delete('/servicios/:id', (req, res) => {
     }
 });
 
+// --- ENDPOINTS FINANCIAMIENTOS ---
+
+// GET: Ver todos los financiamientos
+app.get('/financiamientos', (req, res) => {
+    try {
+        const db = readDB();
+        res.json(db.financiamientos || []);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener financiamientos' });
+    }
+});
+
+// POST: Crear financiamiento
+app.post('/financiamientos', (req, res) => {
+    try {
+        const db = readDB();
+        const newFinancing = {
+            id: Date.now().toString(16),
+            ...req.body
+        };
+        db.financiamientos = db.financiamientos || [];
+        db.financiamientos.push(newFinancing);
+        writeDB(db);
+        res.status(201).json(newFinancing);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al crear financiamiento' });
+    }
+});
+
+// PUT: Actualizar financiamiento
+app.put('/financiamientos/:id', (req, res) => {
+    try {
+        const db = readDB();
+        const index = db.financiamientos.findIndex(f => f.id === req.params.id);
+        if (index !== -1) {
+            db.financiamientos[index] = { ...db.financiamientos[index], ...req.body };
+            writeDB(db);
+            res.json(db.financiamientos[index]);
+        } else {
+            res.status(404).json({ error: 'Financiamiento no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar financiamiento' });
+    }
+});
+
+// DELETE: Eliminar financiamiento
+app.delete('/financiamientos/:id', (req, res) => {
+    try {
+        const db = readDB();
+        db.financiamientos = db.financiamientos.filter(f => f.id !== req.params.id);
+        writeDB(db);
+        res.json({ message: 'Financiamiento eliminado' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar financiamiento' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor de Usuarios y Reportes corriendo en http://localhost:${PORT}`);
 });

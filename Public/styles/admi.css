@@ -70,6 +70,7 @@ main {
 }
 
 .contact-header h2 {
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -80,6 +81,7 @@ main {
 }
 
 .contact-header p {
+    color: #fff;
     font-size: 1.1rem;
     color: var(--text-muted);
 }
@@ -127,13 +129,24 @@ main {
 
 .contact-item h4 {
     font-size: 1.1rem;
-    color: blue;
+    color: #fff;
     margin-bottom: 0.5rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.reportesColor{
+    color: #fff !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .contact-item p {
     margin: 0;
+    color: #020024;
+    font-size: 0.95rem;
+}
+
+#btnSalir{
+    background-color: transparent;
+    border: none;
     color: #020024;
     font-size: 0.95rem;
 }
@@ -180,4 +193,8 @@ main {
 .navbar-brand {
     text-align: center;
     text-wrap: unset;
+}
+.nav-item {
+    color: #020024;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
