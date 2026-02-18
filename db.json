@@ -54,5 +54,16 @@
     }
   ],
   "servicios": [],
-  "financiamientos": []
+  "financiamientos": [
+    {
+      "id": "6174",
+      "proyecto": "papayas",
+      "tipo": "Zonas Verdes",
+      "monto": "200",
+      "fuente": "pan",
+      "fecha": "2026-02-27",
+      "estado": "En Revisión",
+      "descripcion": "hiuggvvv"
+    }
+  ]
 }
