@@ -20,6 +20,13 @@
       "email": "joakoaguilar@gmail.com",
       "password": "12345678",
       "role": "administrador"
+    },
+    {
+      "id": "8b98",
+      "nombreCompleto": "Rachell Luna",
+      "email": "rl123@gmail.com",
+      "password": "12345678",
+      "role": "ciudadano"
     }
   ],
   "reportes": [

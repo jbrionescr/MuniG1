@@ -2,7 +2,8 @@ import {
     getReportes, updateReporteStatus, deleteReporte,
     getProyectos, createProyecto, updateProyecto, deleteProyecto,
     getServicios, createServicio, updateServicio, deleteServicio,
-    getFinanciamientos, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento
+    getFinanciamientos, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento,
+    getdata
 } from '../services/serviceUsuarios.js';
 
 const btnSalir = document.getElementById("btnSalir")
@@ -23,12 +24,16 @@ document.querySelectorAll('.menu-link').forEach(link => {
 });
 
 function showSection(section) {
-    const sections = ['reportes', 'proyectos', 'servicios', 'financiamientos'];
+    const sections = ['reportes', 'proyectos', 'servicios', 'financiamientos', 'usuarios'];
 
     sections.forEach(sec => {
         document.getElementById(`${sec}-section`).style.display =
             sec === section ? 'block' : 'none';
     });
+
+    if (section === 'usuarios') {
+        loadUsers();
+    }
 }
 
 /* =======================
@@ -71,6 +76,30 @@ window.deleteRep = async (id) => {
     await deleteReporte(id);
     loadReports();
 };
+
+/* =======================
+   USUARIOS
+======================= */
+
+async function loadUsers() {
+    const usuarios = await getdata();
+    const tbody = document.getElementById('users-tbody');
+    tbody.innerHTML = '';
+
+    usuarios.forEach(u => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${u.id}</td>
+                <td>${u.nombreCompleto}</td>
+                <td>${u.email}</td>
+                <td>${u.role}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="alert('Funcionalidad de eliminar usuario no implementada en el backend aún')">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    });
+}
 
 /* =======================
    INICIALIZAR

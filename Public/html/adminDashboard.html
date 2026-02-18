@@ -37,9 +37,12 @@
                             Financiamientos</a>
                     </li>
                     <li class="nav-item">
-                       <button id="btnSalir">
-                           Salir
-                       </button>
+                        <a class="nav-link menu-link" href="#" data-section="usuarios">Gestión de Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="btnSalir">
+                            Salir
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -170,6 +173,23 @@
                             </tr>
                         </thead>
                         <tbody id="financing-tbody"></tbody>
+                    </table>
+                </section>
+
+                <!-- USUARIOS -->
+                <section id="usuarios-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Usuarios</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody"></tbody>
                     </table>
                 </section>
 
