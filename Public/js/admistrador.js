@@ -1,4 +1,4 @@
-import { getReportes, updateReporteStatus, deleteReporte, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio } from '../services/serviceUsuarios.js';
+import { getReportes, updateReporteStatus, deleteReporte, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, getFinanciamientos, postFinanciamientos } from '../services/serviceUsuarios.js';
 
 const reportsTbody = document.getElementById('reports-tbody');
 const projectsTbody = document.getElementById('projects-tbody');
@@ -8,9 +8,16 @@ const projectsSection = document.getElementById('projects-section');
 const servicesSection = document.getElementById('services-section');
 const projectForm = document.getElementById('project-form');
 const serviceForm = document.getElementById('service-form');
+const financingForm = document.getElementById('financing-form');
+const financingTbody = document.getElementById("financing-tbody")
+const dataTable = document.getElementById("data-table")
+const financingSection = document.getElementById("financing-section")
 
 document.addEventListener('DOMContentLoaded', () => {
     loadReports();
+    loadProjects();
+    loadServices();
+    loadFinanciamientos();
     setupNavigation();
 });
 
@@ -28,23 +35,57 @@ function setupNavigation() {
             } else if (text.includes('Gestión de Servicios Públicos')) {
                 e.preventDefault();
                 showSection('servicios');
+            } else if (text.includes('Gestión de Financiamientos')) {
+                e.preventDefault();
+                showSection('financiamientos');
             }
         });
     });
 }
 
 function showSection(section) {
+    console.log("cambio de seccion");
+
     reportsSection.style.display = section === 'reportes' ? 'block' : 'none';
     projectsSection.style.display = section === 'proyectos' ? 'block' : 'none';
     servicesSection.style.display = section === 'servicios' ? 'block' : 'none';
+    financingSection.style.display = section === 'financiamientos' ? 'block' : 'none';
 
     if (section === 'reportes') loadReports();
     if (section === 'proyectos') loadProjects();
     if (section === 'servicios') loadServices();
+    if (section === 'financiamientos') loadFinanciamientos();
 }
+
+// --- Financials LOGIC ---
+async function loadFinanciamientos() {
+    console.log("acacacacac");
+
+    const financiamientos = await getFinanciamientos();
+    financingTbody.innerHTML = '';
+
+    financiamientos.forEach(financiamiento => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${financiamiento.id}</td>
+            <td>${financiamiento.proyecto}</td>
+            <td>${financiamiento.monto}</td>
+            <td>${financiamiento.fecha}</td>
+            <td>${financiamiento.estado}</td>
+            <td>
+                <button class="btn-edit-financing" data-id="${financiamiento.id}">Editar</button>
+                <button class="btn-delete-financing" data-id="${financiamiento.id}">Eliminar</button>
+            </td>
+        `;
+        financingTbody.appendChild(tr);
+    });
+}
+
 
 // --- REPORTES LOGIC ---
 async function loadReports() {
+    console.log("Ale el CRACK");
+
     const reportes = await getReportes();
     reportsTbody.innerHTML = '';
 
@@ -101,6 +142,8 @@ async function loadReports() {
 
 // --- PROYECTOS LOGIC ---
 async function loadProjects() {
+    console.log("Ale el muy CRACK");
+
     const proyectos = await getProyectos();
     projectsTbody.innerHTML = '';
 
@@ -148,6 +191,35 @@ async function loadProjects() {
         });
     });
 }
+
+financingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const financingProject = document.getElementById('financing-project').value.trim()
+    const financingType = document.getElementById('financing-type').value.trim()
+    const financingAmount = document.getElementById('financing-amount').value.trim()
+    const financingSource = document.getElementById('financing-source').value.trim()
+    const financingDate = document.getElementById('financing-date').value.trim()
+    const financingStatus = document.getElementById('financing-status').value.trim()
+    const financingDesc = document.getElementById('financing-desc').value.trim()
+    const btnCancelFinancing = document.getElementById('btn-cancel-financing')
+
+    if (financingProject === "" || financingType === "" || financingAmount === "" || financingSource === "" || financingDate === "" || financingStatus === "" || financingDesc === "") {
+        alert("Por favor, complete todos los campos del financiamiento.");
+        return;
+    }
+
+    const financingData = {
+        proyecto: financingProject,
+        tipo: financingType,
+        monto: financingAmount,
+        fuente: financingSource,
+        fecha: financingDate,
+        estado: financingStatus,
+        descripcion: financingDesc
+    };
+    await postFinanciamientos(financingData)
+})
 
 projectForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -199,6 +271,8 @@ function resetProjectForm() {
 
 // --- SERVICIOS PÚBLICOS LOGIC ---
 async function loadServices() {
+    console.log("Ale el hiper CRACK");
+
     const servicios = await getServicios();
     servicesTbody.innerHTML = '';
 

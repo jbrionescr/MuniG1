@@ -207,4 +207,29 @@ async function deleteServicio(id) {
     }
 }
 
-export { postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio } 
+
+async function getFinanciamientos() {
+    try {
+        const res = await fetch("http://localhost:1212/financiamientos");
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+async function postFinanciamientos(obj) {
+    try {
+        const res = await fetch("http://localhost:1212/financiamientos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export { getFinanciamientos, postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, postFinanciamientos    } 
