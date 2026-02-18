@@ -1,4 +1,4 @@
-import { getReportes, updateReporteStatus, deleteReporte, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio } from '../services/serviceUsuarios.js';
+import { getReportes, updateReporteStatus, deleteReporte, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, getFinanciamientos, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento } from '../services/serviceUsuarios.js';
 
 const reportsTbody = document.getElementById('reports-tbody');
 const projectsTbody = document.getElementById('projects-tbody');
@@ -8,9 +8,16 @@ const projectsSection = document.getElementById('projects-section');
 const servicesSection = document.getElementById('services-section');
 const projectForm = document.getElementById('project-form');
 const serviceForm = document.getElementById('service-form');
+const financingForm = document.getElementById('financing-form');
+const financingTbody = document.getElementById("financing-tbody")
+const dataTable = document.getElementById("data-table")
+const financingSection = document.getElementById("financing-section")
 
 document.addEventListener('DOMContentLoaded', () => {
     loadReports();
+    loadProjects();
+    loadServices();
+    loadFinanciamientos();
     setupNavigation();
 });
 
@@ -28,23 +35,92 @@ function setupNavigation() {
             } else if (text.includes('Gestión de Servicios Públicos')) {
                 e.preventDefault();
                 showSection('servicios');
+            } else if (text.includes('Gestión de Financiamientos')) {
+                e.preventDefault();
+                showSection('financiamientos');
             }
         });
     });
 }
 
 function showSection(section) {
+    console.log("cambio de seccion");
+
     reportsSection.style.display = section === 'reportes' ? 'block' : 'none';
     projectsSection.style.display = section === 'proyectos' ? 'block' : 'none';
     servicesSection.style.display = section === 'servicios' ? 'block' : 'none';
+    financingSection.style.display = section === 'financiamientos' ? 'block' : 'none';
 
     if (section === 'reportes') loadReports();
     if (section === 'proyectos') loadProjects();
     if (section === 'servicios') loadServices();
+    if (section === 'financiamientos') loadFinanciamientos();
 }
+
+// --- Financials LOGIC ---
+async function loadFinanciamientos() {
+    const financiamientos = await getFinanciamientos();
+    financingTbody.innerHTML = '';
+
+    financiamientos.forEach(financiamiento => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${financiamiento.id}</td>
+            <td>${financiamiento.proyecto}</td>
+            <td>${financiamiento.tipo}</td>
+            <td>${financiamiento.monto}</td>
+            <td>${financiamiento.fuente}</td>
+            <td>${financiamiento.fecha}</td>
+            <td>${financiamiento.estado}</td>
+            <td>
+                <button class="btn-edit-financing" data-id="${financiamiento.id}" style="background-color: #f39c12; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right: 5px; cursor: pointer;">Editar</button>
+                <button class="btn-delete-financing" data-id="${financiamiento.id}" style="background-color: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Eliminar</button>
+            </td>
+        `;
+        financingTbody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.btn-edit-financing').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const id = btn.getAttribute('data-id');
+            const financing = financiamientos.find(f => f.id === id);
+            if (financing) {
+                document.getElementById('financing-id').value = financing.id;
+                document.getElementById('financing-project').value = financing.proyecto;
+                document.getElementById('financing-type').value = financing.tipo;
+                document.getElementById('financing-amount').value = financing.monto;
+                document.getElementById('financing-source').value = financing.fuente;
+                document.getElementById('financing-date').value = financing.fecha;
+                document.getElementById('financing-status').value = financing.estado;
+                document.getElementById('financing-desc').value = financing.descripcion;
+
+                document.getElementById('financing-form-title').textContent = 'Editar Financiamiento';
+                document.getElementById('btn-cancel-financing').style.display = 'inline-block';
+            }
+        });
+    });
+
+    document.querySelectorAll('.btn-delete-financing').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const id = btn.getAttribute('data-id');
+            if (confirm('¿Está seguro de eliminar este financiamiento?')) {
+                const res = await deleteFinanciamiento(id);
+                if (res) {
+                    alert('Financiamiento eliminado correctamente');
+                    loadFinanciamientos();
+                } else {
+                    alert('Error al eliminar financiamiento');
+                }
+            }
+        });
+    });
+}
+
 
 // --- REPORTES LOGIC ---
 async function loadReports() {
+    console.log("Ale el CRACK");
+
     const reportes = await getReportes();
     reportsTbody.innerHTML = '';
 
@@ -101,6 +177,8 @@ async function loadReports() {
 
 // --- PROYECTOS LOGIC ---
 async function loadProjects() {
+    console.log("Ale el muy CRACK");
+
     const proyectos = await getProyectos();
     projectsTbody.innerHTML = '';
 
@@ -147,6 +225,58 @@ async function loadProjects() {
             }
         });
     });
+}
+
+financingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const id = document.getElementById('financing-id').value;
+    const financingProject = document.getElementById('financing-project').value.trim();
+    const financingType = document.getElementById('financing-type').value.trim();
+    const financingAmount = document.getElementById('financing-amount').value.trim();
+    const financingSource = document.getElementById('financing-source').value.trim();
+    const financingDate = document.getElementById('financing-date').value.trim();
+    const financingStatus = document.getElementById('financing-status').value.trim();
+    const financingDesc = document.getElementById('financing-desc').value.trim();
+
+    if (financingProject === "" || financingType === "" || financingAmount === "" || financingSource === "" || financingDate === "" || financingStatus === "" || financingDesc === "") {
+        alert("Por favor, complete todos los campos del financiamiento.");
+        return;
+    }
+
+    const financingData = {
+        proyecto: financingProject,
+        tipo: financingType,
+        monto: financingAmount,
+        fuente: financingSource,
+        fecha: financingDate,
+        estado: financingStatus,
+        descripcion: financingDesc
+    };
+
+    let res;
+    if (id) {
+        res = await updateFinanciamiento(id, financingData);
+    } else {
+        res = await postFinanciamientos(financingData);
+    }
+
+    if (res) {
+        alert(id ? 'Financiamiento actualizado' : 'Financiamiento creado');
+        resetFinancingForm();
+        loadFinanciamientos();
+    } else {
+        alert('Error al guardar financiamiento');
+    }
+});
+
+document.getElementById('btn-cancel-financing').addEventListener('click', resetFinancingForm);
+
+function resetFinancingForm() {
+    financingForm.reset();
+    document.getElementById('financing-id').value = '';
+    document.getElementById('financing-form-title').textContent = 'Registrar Nuevo Financiamiento';
+    document.getElementById('btn-cancel-financing').style.display = 'none';
 }
 
 projectForm.addEventListener('submit', async (e) => {
@@ -199,6 +329,8 @@ function resetProjectForm() {
 
 // --- SERVICIOS PÚBLICOS LOGIC ---
 async function loadServices() {
+    console.log("Ale el hiper CRACK");
+
     const servicios = await getServicios();
     servicesTbody.innerHTML = '';
 

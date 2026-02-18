@@ -7,7 +7,7 @@
   background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
-/* Text Gradient CSS */
+/* Texto Gradient CSS */
 .text-gradient {
   color: #12C9B4;
   background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
@@ -43,12 +43,34 @@ body {
 main {
   color: rgb(77, 231, 231);
 }
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
+/* Carrucel de index */
+.imagenCarrucel1 {
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+.imagenCarrucel2 {
+  width: 53%;
+  height: 53%;
+  object-fit: cover;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imagenCarrucel3 {
+  width: 45%;
+  height: 45%;
+  object-fit: cover;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -56,11 +78,10 @@ body {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.data-table th,
-.data-table td {
+.data-table th, .data-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -90,34 +111,14 @@ body {
 .btn-delete:hover {
     background-color: #c0392b;
 }
-
-/* Status Badges */
-.status-badge {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: white;
+/* Bienvenido al Sistema de Gestión Municipal */
+.titulo2 {
+background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-
-.status-planificación {
-    background-color: #6c757d;
-}
-
-.status-en-ejecución {
-    background-color: #007bff;
-}
-
-.status-completado {
-    background-color: #28a745;
-}
-
-.status-suspendido {
-    background-color: #dc3545;
-}
-
-/* Dashboard Layout Enhancements */
-.sidebar-nav ul li.active a {
-    background-color: #34495e;
-    color: #3498db;
+/* parte inferior de pagina */
+.footer {
+  background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+text-align: center;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

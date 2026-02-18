@@ -43,7 +43,16 @@
       "fechaInicio": "2026-02-18",
       "estado": "En Ejecución",
       "descripcion": "Se van a mejorar las carreteras del canton de Sur."
+    },
+    {
+      "id": "94c6",
+      "nombre": "acaca",
+      "presupuesto": "1",
+      "fechaInicio": "2002-02-20",
+      "estado": "En Ejecución",
+      "descripcion": "adsds"
     }
   ],
-  "servicios": []
+  "servicios": [],
+  "financiamientos": []
 }

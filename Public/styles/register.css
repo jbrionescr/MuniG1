@@ -1,0 +1,41 @@
+body {
+    background-color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    width: 600px;
+    margin: 0px auto;
+    border: 10px solid black;
+    background: #aeeec1;
+    background: radial-gradient(circle, rgba(174, 238, 193, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    color: black;
+    text-align: center;
+    text-decoration: solid;
+
+}
+
+.imagenlogin {
+    image-orientation: from-image;
+    border-image-width: auto;
+    width: 35%;
+    height: 35%;
+}
+
+.logo2 {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+
+    label{
+        display: block;
+    }
+}
