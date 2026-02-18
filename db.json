@@ -29,6 +29,10 @@
       "tipo": "Baches",
       "descripcion": "Hay un hueco",
       "ubicacion": "San Rafael Abajo"
+    },
+    {
+      "estado": "Resuelto",
+      "id": "348b"
     }
   ],
   "proyectos": [
