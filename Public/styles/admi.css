@@ -1,76 +1,27 @@
-.encabezado {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  background: #020024;
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-}
-
-/* Texto Gradient CSS */
-.text-gradient {
-  color: #12C9B4;
-  background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
 body {
-  background: #020024;
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: #020024;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 /* Navbar Hover Effect */
 .navbar-nav .nav-link:hover,
 .navbar-brand:hover {
-  color: turquoise !important;
+    color: turquoise !important;
 }
 
-/* Navbar Custom Styles */
-.navbar {
-  background-color: black !important;
-  /* Fondo negro */
-}
+
 
 .navbar-nav .nav-link,
 .navbar-brand {
-  color: white !important;
-  /* Letras blancas */
+    color: rgb(7, 7, 7) !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* Letras negras */
 }
 
 main {
-  color: rgb(77, 231, 231);
+    color: rgb(77, 231, 231);
 }
-/* Carrucel de index */
-.imagenCarrucel1 {
-  width: 30%;
-  height: 30%;
-  object-fit: cover;
-  justify-content: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.imagenCarrucel2 {
-  width: 53%;
-  height: 53%;
-  object-fit: cover;
-  justify-content: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.imagenCarrucel3 {
-  width: 45%;
-  height: 45%;
-  object-fit: cover;
-  justify-content: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -78,10 +29,11 @@ main {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.data-table th, .data-table td {
+.data-table th,
+.data-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -111,12 +63,14 @@ main {
 .btn-delete:hover {
     background-color: #c0392b;
 }
+
 .contact-header {
     text-align: center;
     margin-bottom: 3rem;
 }
 
 .contact-header h2 {
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -127,6 +81,7 @@ main {
 }
 
 .contact-header p {
+    color: #fff;
     font-size: 1.1rem;
     color: var(--text-muted);
 }
@@ -174,13 +129,24 @@ main {
 
 .contact-item h4 {
     font-size: 1.1rem;
-    color: blue;
+    color: #fff;
     margin-bottom: 0.5rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.reportesColor{
+    color: #fff !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .contact-item p {
     margin: 0;
+    color: #020024;
+    font-size: 0.95rem;
+}
+
+#btnSalir{
+    background-color: transparent;
+    border: none;
     color: #020024;
     font-size: 0.95rem;
 }
@@ -208,14 +174,27 @@ main {
     .map-container {
         min-height: 300px;
     }
-  }
-  .titulo2 {
-background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-/* parte inferior de pagina */
-.footer {
-  background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
-text-align: center;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+.titulo2 {
+    background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.enlaces {
+
+    a {
+        text-decoration: none;
+        color: #020024;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+}
+
+.navbar-brand {
+    text-align: center;
+    text-wrap: unset;
+}
+.nav-item {
+    color: #020024;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

@@ -1,13 +1,6 @@
 {
   "usuarios": [
     {
-      "id": "8ed4",
-      "nombreCompleto": "Alejandro Mendoza",
-      "email": "alejandronicmen@gmail.com",
-      "password": "12345678",
-      "role": "ciudadano"
-    },
-    {
       "id": "fe51",
       "nombreCompleto": "Rachell Luna",
       "email": "rachelluna@gmail.com",
@@ -20,6 +13,13 @@
       "email": "joakoaguilar@gmail.com",
       "password": "12345678",
       "role": "administrador"
+    },
+    {
+      "id": "8b98",
+      "nombreCompleto": "Rachell Luna",
+      "email": "rl123@gmail.com",
+      "password": "12345678",
+      "role": "ciudadano"
     }
   ],
   "reportes": [
@@ -32,7 +32,7 @@
     },
     {
       "estado": "Resuelto",
-      "id": "348b"
+      "id": "6795"
     }
   ],
   "proyectos": [

@@ -3,270 +3,201 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Administrador - Sistema Municipal</title>
-    <link rel="stylesheet" href="../styles/index.css">
-    <!-- Iconos sugeridos (ejemplo con FontAwesome) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/admi.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="dashboard-wrapper">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>Admin Panel</h2>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="active"><a href="#"><i class="fas fa-clipboard-list"></i> Gestión de Reportes</a></li>
-                    <li><a href="#"><i class="fas fa-road"></i> Gestión de Proyectos Viales</a></li>
-                    <li><a href="#"><i class="fas fa-hand-holding-usd"></i> Gestión de Financiamientos</a></li>
-                    <li><a href="#"><i class="fas fa-broom"></i> Gestión de Servicios Públicos</a></li>
-                    <li><a href="../html/index.html"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 reportesColor">Panel Administrador</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-md-3 col-lg-2 bg-light vh-100 p-3">
+                <ul class="nav flex-column" id="sidebar-menu">
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="reportes">Gestión de Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="proyectos">Gestión de Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="servicios">Gestión de Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="financiamientos">Gestión de
+                            Financiamientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="usuarios">Gestión de Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="btnSalir">
+                            Salir
+                        </button>
+                    </li>
                 </ul>
-            </nav>
-        </aside>
+            </div>
 
-        <main class="dashboard-content">
-            <header class="top-bar">
-                <div class="user-info">
-                    <span>Bienvenido, <strong>Administrador</strong></span>
-                </div>
-            </header>
+            <!-- CONTENIDO -->
+            <div class="col-md-9 col-lg-10 p-4">
 
-            <section class="overview-stats">
-                <div class="stat-card">
-                    <h3>Total Usuarios</h3>
-                    <p class="number">1,250</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Ingresos Hoy</h3>
-                    <p class="number">$2,400</p>
-                </div>
-            </section>
+                <!-- REPORTES -->
+                <section id="reportes-section">
+                    <h3 class="reportesColor">Gestión de Reportes</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Ubicación</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-tbody"></tbody>
+                    </table>
+                </section>
 
-            <section id="reports-section" class="recent-activity">
-                <h2>Gestión de Reportes Municipales</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Ubicación</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="reports-tbody">
-                        <!-- Los reportes se cargarán dinámicamente aquí -->
-                    </tbody>
-                </table>
-            </section>
+                <!-- PROYECTOS -->
+                <section id="proyectos-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Proyectos</h3>
 
-            <section id="projects-section" class="recent-activity" style="display: none;">
-                <h2>Gestión de Proyectos Viales</h2>
-
-                <div class="auth-card"
-                    style="width: 100%; max-width: 800px; margin: 0 auto 30px auto; background: white; padding: 20px; border-radius: 8px;">
-                    <h3 id="project-form-title">Crear Nuevo Proyecto</h3>
                     <form id="project-form">
                         <input type="hidden" id="project-id">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div>
-                                <label style="display: block; margin-bottom: 5px;">Nombre del Proyecto</label>
-                                <input type="text" id="project-name" required
-                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                            </div>
-                            <div>
-                                <label style="display: block; margin-bottom: 5px;">Presupuesto</label>
-                                <input type="number" id="project-budget" required
-                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                            </div>
-                            <div>
-                                <label style="display: block; margin-bottom: 5px;">Fecha de Inicio</label>
-                                <input type="date" id="project-date" required
-                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                            </div>
-                            <div>
-                                <label style="display: block; margin-bottom: 5px;">Estado</label>
-                                <select id="project-status" required
-                                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                                    <option value="Planificación">Planificación</option>
-                                    <option value="En Ejecución">En Ejecución</option>
-                                    <option value="Finalizado">Finalizado</option>
-                                    <option value="Detenido">Detenido</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <label style="display: block; margin-bottom: 5px;">Descripción</label>
-                            <textarea id="project-desc" rows="3" required
-                                style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
-                        </div>
-                        <div style="margin-top: 20px; text-align: right;">
-                            <button type="button" id="btn-cancel-project"
-                                style="background: #95a5a6; color: white; border: none; padding: 8px 15px; border-radius: 4px; margin-right: 10px; display: none;">Cancelar</button>
-                            <button type="submit"
-                                style="background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 4px;">Guardar
-                                Proyecto</button>
-                        </div>
+
+                        <input type="text" id="project-name" placeholder="Nombre" class="form-control mb-2" required>
+                        <input type="number" id="project-budget" placeholder="Presupuesto" class="form-control mb-2"
+                            required>
+                        <input type="date" id="project-date" class="form-control mb-2" required>
+
+                        <select id="project-status" class="form-control mb-2">
+                            <option value="Planificación">Planificación</option>
+                            <option value="En Ejecución">En Ejecución</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+
+                        <textarea id="project-desc" placeholder="Descripción" class="form-control mb-2"></textarea>
+
+                        <button class="btn btn-success">Guardar</button>
+                        <button type="button" id="btn-cancel-project" class="btn btn-secondary"
+                            style="display:none;">Cancelar</button>
                     </form>
-                </div>
 
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Presupuesto</th>
-                            <th>Inicio</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="projects-tbody">
-                        <!-- Proyectos dinámicos -->
-                    </tbody>
-                </table>
-            </section>
+                    <table class="table table-bordered mt-4">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Presupuesto</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projects-tbody"></tbody>
+                    </table>
+                </section>
 
-            <section id="services-section" class="recent-activity" style="display: none;">
-                <h2>Gestión de Servicios Públicos</h2>
+                <!-- SERVICIOS -->
+                <section id="servicios-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Servicios</h3>
 
-                <div class="auth-card">
-                    <h3 id="service-form-title">Gestionar Servicio Público</h3>
                     <form id="service-form">
                         <input type="hidden" id="service-id">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Tipo de Servicio</label>
-                                <select id="service-type" required>
-                                    <option value="Alumbrado Público">Alumbrado Público</option>
-                                    <option value="Mantenimiento de zonas verdes">Mantenimiento de zonas verdes</option>
-                                    <option value="Recolección de residuos">Recolección de residuos</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Responsable</label>
-                                <input type="text" id="service-responsible" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Estado del Mantenimiento</label>
-                                <input type="text" id="service-status" required
-                                    placeholder="Ej: Activo, Pendiente, En Progreso">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <textarea id="service-desc" rows="3" required></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" id="btn-cancel-service" style="display: none;">Cancelar</button>
-                            <button type="submit">Guardar Servicio</button>
-                        </div>
+
+                        <select id="service-type" class="form-control mb-2">
+                            <option value="Alumbrado Público">Alumbrado Público</option>
+                            <option value="Zonas Verdes">Zonas Verdes</option>
+                            <option value="Residuos">Residuos</option>
+                        </select>
+
+                        <input type="text" id="service-responsible" placeholder="Responsable" class="form-control mb-2">
+                        <input type="text" id="service-status" placeholder="Estado" class="form-control mb-2">
+                        <textarea id="service-desc" placeholder="Descripción" class="form-control mb-2"></textarea>
+
+                        <button class="btn btn-success">Guardar</button>
+                        <button type="button" id="btn-cancel-service" class="btn btn-secondary"
+                            style="display:none;">Cancelar</button>
                     </form>
-                </div>
 
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Descripción</th>
-                            <th>Responsable</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="services-tbody">
-                        <!-- Servicios dinámicos -->
-                    </tbody>
-                </table>
-            </section>
+                    <table class="table table-bordered mt-4">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Responsable</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="services-tbody"></tbody>
+                    </table>
+                </section>
 
-            <section id="financing-section" class="recent-activity" style="display: none;">
-                <h2>Gestión de Financiamientos Municipales</h2>
+                <!-- FINANCIAMIENTOS -->
+                <section id="financiamientos-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Financiamientos</h3>
 
-                <div class="auth-card">
-                    <h3 id="financing-form-title">Registrar Nuevo Financiamiento</h3>
                     <form id="financing-form">
                         <input type="hidden" id="financing-id">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="financing-project">Nombre del Proyecto:</label>
-                                <input type="text" id="financing-project" name="project" required
-                                    placeholder="Ej: Desarrollo de Zonas Verdes en el Cantón">
-                            </div>
-                            <div class="form-group">
-                                <label for="financing-type">Tipo de Proyecto:</label>
-                                <select id="financing-type" name="type" required>
-                                    <option value="" disabled selected>Seleccione un tipo...</option>
-                                    <option value="Zonas Verdes">Zonas Verdes / Parques</option>
-                                    <option value="Viabilidad">Viabilidad / Caminos</option>
-                                    <option value="Infraestructura">Infraestructura Municipal</option>
-                                    <option value="Social">Desarrollo Social / Educación</option>
-                                    <option value="Ambiental">Sostenibilidad Ambiental</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="financing-amount">Monto Solicitado (₡):</label>
-                                <input type="number" id="financing-amount" name="amount" required min="0" step="0.01"
-                                    placeholder="Ingrese el monto solicitado">
-                            </div>
-                            <div class="form-group">
-                                <label for="financing-source">Fuente de Financiamiento:</label>
-                                <input type="text" id="financing-source" name="source" required
-                                    placeholder="Ej: Ministerio de Hacienda, Préstamo BID">
-                            </div>
-                            <div class="form-group">
-                                <label for="financing-date">Fecha Estimada de Inicio:</label>
-                                <input type="date" id="financing-date" name="estimatedDate" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="financing-status">Estado de la Solicitud:</label>
-                                <select id="financing-status" name="status" required>
-                                    <option value="Pendiente">Pendiente</option>
-                                    <option value="En Revisión">En Revisión</option>
-                                    <option value="Aprobado">Aprobado</option>
-                                    <option value="Rechazado">Rechazado</option>
-                                    <option value="En Ejecución">Financiamiento en Ejecución</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="financing-desc">Justificación Técnica y Descripción:</label>
-                            <textarea id="financing-desc" name="description" rows="4" required
-                                placeholder="Describa el objetivo del proyecto y por qué requiere este financiamiento..."></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" id="btn-cancel-financing" class="btn-cancel"
-                                style="display: none;">Cancelar Edición</button>
-                            <button type="submit" class="btn-save">Registrar Financiamiento</button>
-                        </div>
-                    </form>
-                </div>
 
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Proyecto</th>
-                            <th>Tipo</th>
-                            <th>Monto (₡)</th>
-                            <th>Fuente</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="financing-tbody">
-                        <!-- Se cargarán dinámicamente -->
-                    </tbody>
-                </table>
-            </section>
-        </main>
+                        <input type="text" id="financing-project" placeholder="Proyecto" class="form-control mb-2">
+                        <input type="text" id="financing-type" placeholder="Tipo" class="form-control mb-2">
+                        <input type="number" id="financing-amount" placeholder="Monto" class="form-control mb-2">
+                        <input type="text" id="financing-source" placeholder="Fuente" class="form-control mb-2">
+                        <input type="date" id="financing-date" class="form-control mb-2">
+                        <input type="text" id="financing-status" placeholder="Estado" class="form-control mb-2">
+                        <textarea id="financing-desc" placeholder="Descripción" class="form-control mb-2"></textarea>
+
+                        <button class="btn btn-success">Guardar</button>
+                        <button type="button" id="btn-cancel-financing" class="btn btn-secondary"
+                            style="display:none;">Cancelar</button>
+                    </form>
+
+                    <table class="table table-bordered mt-4">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Proyecto</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financing-tbody"></tbody>
+                    </table>
+                </section>
+
+                <!-- USUARIOS -->
+                <section id="usuarios-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Usuarios</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody"></tbody>
+                    </table>
+                </section>
+
+            </div>
+        </div>
     </div>
+
+    <script type="module" src="../js/admistrador.js"></script>
 </body>
-<script type="module" src="../js/admistrador.js"></script>
 
 </html>

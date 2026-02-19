@@ -258,4 +258,34 @@ async function deleteFinanciamiento(id) {
     }
 }
 
-export { getFinanciamientos, postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento }
+async function updateUserRole(id, role) {
+    try {
+        const peticion = await fetch(`http://localhost:1212/usuarios/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ role })
+        })
+        const respuesta = await peticion.json()
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function deleteUser(id) {
+    try {
+        const peticion = await fetch(`http://localhost:1212/usuarios/${id}`, {
+            method: "DELETE"
+        })
+        const respuesta = await peticion.json()
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export { getFinanciamientos, postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento, updateUserRole, deleteUser }

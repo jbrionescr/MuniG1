@@ -95,6 +95,41 @@ app.post('/usuarios', (req, res) => {
     res.json(newUser);
 });
 
+// PUT: Actualizar usuario (rol)
+app.put('/usuarios/:id', (req, res) => {
+    try {
+        const db = readDB();
+        const index = db.usuarios.findIndex(u => u.id === req.params.id);
+        if (index !== -1) {
+            db.usuarios[index] = { ...db.usuarios[index], ...req.body };
+            writeDB(db);
+            res.json(db.usuarios[index]);
+        } else {
+            res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar el usuario' });
+    }
+});
+
+// DELETE: Eliminar usuario
+app.delete('/usuarios/:id', (req, res) => {
+    try {
+        const db = readDB();
+        const initialLength = db.usuarios.length;
+        db.usuarios = db.usuarios.filter(u => u.id !== req.params.id);
+
+        if (db.usuarios.length < initialLength) {
+            writeDB(db);
+            res.json({ message: 'Usuario eliminado correctamente' });
+        } else {
+            res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar el usuario' });
+    }
+});
+
 // POST: Crear nuevo reporte
 app.post('/reportes', (req, res) => {
     try {

@@ -16,7 +16,7 @@
 
 <body>
   <div class="encabezado">
-    <img src="../img/1771259929645.png" width="100px" height="100px" alt="">
+   <a class="nav-link" href="../html/index.html"><img src="../img/1771259929645.png" width="100px" height="100px" alt="logomuni" ></a>
     <h1 class="text-gradient">Municipalidad del Sur</h1>
   </div>
   <header>
@@ -35,26 +35,18 @@
             <li class="nav-item">
               <a class="nav-link" href="../html/login.html">Inicio Sesion</a>
             </li>
-          <li class="nav-item">
+             <li class="nav-item">
               <a class="nav-link" href="../html/register.html">Registrarse</a>
-            </li>
-            <li class="nav-item">
-        
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Registrarse
+                Información Institucional
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#features">Registrarse</a></li>
-                <li><a class="dropdown-item" href="#features">Nuestros Servicios</a></li>
-                <li>
-                  
-                </li>
-                <li><a class="dropdown-item" href="#features">Trámites Online</a></li>
-                <li><a class="dropdown-item" href="#features">Atención Ciudadana</a></li>
-                <li><a class="dropdown-item" href="#features">Transparencia</a></li>
+                <li><a class="dropdown-item" href="../html/nuestrosservicios.html">Nuestros Servicios</a></li>
+                <li><a class="dropdown-item" href="../html/tramitesonlline.html">Trámites Online</a></li>
+                <li><a class="dropdown-item" href="../html/transparencia.html">Transparencia</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -99,28 +91,51 @@
   </div>
   <!--iformacion de pagina (importante modificar)-->
   <main>
-    <section id="hero">
-      <p>Accede a tus trámites y servicios de forma rápida y sencilla.</p>
-      <div class="cta-buttons">
-        <a href="register.html" class="btn-primary">Empezar ahora</a>
-        <a href="login.html" class="btn-secondary">Ya tengo cuenta</a>
-      </div>
-    </section>
 
-    <section id="features">
-      <h2><a href="../html/nuestrosservicios.html">Nuestros Servicios</a></h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3> <a href="../html/tramitesonlline.html">Trámites Online</a></h3>
-          <p>Realiza tus solicitudes desde la comodidad de tu casa.</p>
-        </div>
-        <div class="feature-card">
-          <h3> <a href="../html/atencionciudadana.html">Atención Ciudadana</a></h3>
-          <p>Soporte directo para resolver tus dudas.</p>
-        </div>
-        <h3> <a href="../html/transparencia.html">Transparencia</a></h3>
-        <p>Acceso a la información municipal actualizada.</p>
-    </section>
+    <section class="cta-section" id="encuentranos">
+                <div class="contact-header">
+                    <h2>Encuéntranos</h2>
+                    <p>Estaremos encantados de escucharte. Visítanos o contáctanos por nuestros canales oficiales.</p>
+                </div>
+
+                <div class="contact-content-grid">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>Llámanos</h4>
+                                <p><strong>Línea Gratuita:</strong> 800-000-4627</p>
+                                <p><strong>Central:</strong> +506 2202-4000</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div>
+                                <h4>Horario de Atención</h4>
+                                <p><strong> Lunes a Viernes</strong></p>
+                                <p>8:00 a.m. - 5:00 p.m.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Oficinas Centrales</h4>
+                                <p><strong> Calle la Amistad, 400sur de La Carniceria Don Adrian.</strong></p>
+                                <p>San Rafael Abajo, Desamparados, San José, Costa Rica</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d982.6112679610067!2d-84.08886609093693!3d9.896839321448333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e327adccdca9%3A0x9206e5e07ca3a153!2sIglesia%20de%20la%20Ciudad!5e0!3m2!1ses-419!2scr!4v1769913296914!5m2!1ses-419!2scr"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </section>
   </main>
   <!--parte inferior de pagina-->
   <footer class="footer">
