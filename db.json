@@ -20,21 +20,16 @@
       "email": "rl123@gmail.com",
       "password": "12345678",
       "role": "ciudadano"
-    }
-  ],
-  "reportes": [
-    {
-      "id": "1684",
-      "categoria": "Infraestructura Vial",
-      "tipo": "Baches",
-      "descripcion": "Hay un hueco",
-      "ubicacion": "San Rafael Abajo"
     },
     {
-      "estado": "Resuelto",
-      "id": "6795"
+      "id": "ed2f",
+      "nombreCompleto": "John Briones",
+      "email": "briones@gmail.com",
+      "password": "111111111",
+      "role": "empleado"
     }
   ],
+  "reportes": [],
   "proyectos": [
     {
       "id": "c3e7",
@@ -64,6 +59,56 @@
       "fecha": "2026-02-27",
       "estado": "En Revisión",
       "descripcion": "hiuggvvv"
+    }
+  ],
+  "empleados": [
+    {
+      "id": "998d",
+      "nombre": "Carlos Palacios",
+      "puesto": "Lame Botas",
+      "departamento": "Basura",
+      "salarioBruto": 256000,
+      "horasExtras": 1,
+      "montoHorasExtras": 1000,
+      "rebajos": 25000,
+      "salarioNeto": 232000
+    },
+    {
+      "id": "5ac8",
+      "nombre": "Joaquin Aguilar",
+      "puesto": "Motorizado",
+      "departamento": "Transporte",
+      "salarioBruto": 390000,
+      "horasExtras": 6,
+      "montoHorasExtras": 6000,
+      "rebajos": 24000,
+      "salarioNeto": 372000
+    }
+  ],
+  "planilla": [
+    {
+      "id": "ab55",
+      "nombre": "Joaquin Aguilar",
+      "puesto": "Motorizado",
+      "departamento": "Transporte",
+      "fecha": "2026-02-19",
+      "salarioBruto": 200000,
+      "horasExtras": 12,
+      "montoHorasExtras": 12000,
+      "rebajos": 10000,
+      "salarioNeto": 202000
+    },
+    {
+      "id": "f92d",
+      "nombre": "Jeank Aguero",
+      "puesto": "Prof",
+      "departamento": "Docentes",
+      "fecha": "2026-02-20",
+      "salarioBruto": 900000,
+      "horasExtras": 1,
+      "montoHorasExtras": 1000,
+      "rebajos": 75000,
+      "salarioNeto": 826000
     }
   ]
 }

@@ -288,4 +288,63 @@ async function deleteUser(id) {
     }
 }
 
-export { getFinanciamientos, postData, getdata, postReporte, getReportes, deleteReporte, updateReporteStatus, getReporteById, getProyectos, createProyecto, updateProyecto, deleteProyecto, getServicios, createServicio, updateServicio, deleteServicio, postFinanciamientos, updateFinanciamiento, deleteFinanciamiento, updateUserRole, deleteUser }
+// --- SERVICES PLANILLA (Anteriormente Empleados) ---
+
+async function getPlanilla() {
+    try {
+        const res = await fetch("http://localhost:1212/planilla");
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+async function createPlanilla(data) {
+    try {
+        const res = await fetch("http://localhost:1212/planilla", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function updatePlanilla(id, data) {
+    try {
+        const res = await fetch(`http://localhost:1212/planilla/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+async function deletePlanilla(id) {
+    try {
+        const res = await fetch(`http://localhost:1212/planilla/${id}`, {
+            method: "DELETE"
+        });
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export {
+    getFinanciamientos, postData, getdata, postReporte, getReportes,
+    deleteReporte, updateReporteStatus, getReporteById, getProyectos,
+    createProyecto, updateProyecto, deleteProyecto, getServicios,
+    createServicio, updateServicio, deleteServicio, postFinanciamientos,
+    updateFinanciamiento, deleteFinanciamiento, updateUserRole, deleteUser,
+    getPlanilla, createPlanilla, updatePlanilla, deletePlanilla
+}

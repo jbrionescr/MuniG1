@@ -40,6 +40,9 @@
                         <a class="nav-link menu-link" href="#" data-section="usuarios">Gestión de Usuarios</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="#" data-section="planilla">Gestión de Planilla</a>
+                    </li>
+                    <li class="nav-item">
                         <button id="btnSalir">
                             Salir
                         </button>
@@ -190,6 +193,69 @@
                             </tr>
                         </thead>
                         <tbody id="users-tbody"></tbody>
+                    </table>
+                </section>
+
+                <!-- PLANILLA -->
+                <section id="planilla-section" style="display:none;">
+                    <h3 class="reportesColor">Gestión de Planilla</h3>
+
+                    <form id="planilla-form" class="mb-4">
+                        <input type="hidden" id="planilla-id">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <input type="text" id="planilla-nombre" placeholder="Nombre Completo"
+                                    class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="text" id="planilla-puesto" placeholder="Puesto" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="text" id="planilla-departamento" placeholder="Departamento"
+                                    class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="date" id="planilla-fecha" class="form-control" required>
+                                <small class="text-muted">Fecha de Pago</small>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="number" id="planilla-salario-bruto" placeholder="Salario Bruto"
+                                    class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="number" id="planilla-horas-extras" placeholder="Horas Extras"
+                                    class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="planilla-monto-horas-extras">Monto Horas Extras</label>
+                                <input type="number" id="planilla-monto-horas-extras" class="form-control" readonly>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="number" id="planilla-rebajos" placeholder="Rebajos" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="planilla-salario-neto">Salario Neto (Autocalculable)</label>
+                                <input type="number" id="planilla-salario-neto" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Guardar Registro</button>
+                        <button type="button" id="btn-cancel-planilla" class="btn btn-secondary"
+                            style="display:none;">Cancelar</button>
+                    </form>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Puesto</th>
+                                <th>Neto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planilla-tbody"></tbody>
                     </table>
                 </section>
 
