@@ -20,19 +20,37 @@
       "email": "joakoaguilar@gmail.com",
       "password": "12345678",
       "role": "administrador"
+    },
+    {
+      "id": "dae6",
+      "nombreCompleto": "Priscilla",
+      "email": "pri@gmail.com",
+      "password": "12345678",
+      "role": "ciudadano"
+    },
+    {
+      "id": "5c34",
+      "nombreCompleto": "pedro",
+      "email": "pedro@gmail.com",
+      "password": "12345678",
+      "role": "ciudadano"
     }
   ],
   "reportes": [
     {
-      "id": "1684",
-      "categoria": "Infraestructura Vial",
-      "tipo": "Baches",
-      "descripcion": "Hay un hueco",
-      "ubicacion": "San Rafael Abajo"
+      "id": "05fb",
+      "tipo": "vial",
+      "ubicacion": "calle los pinitos",
+      "descripcion": "hay un hueco grande en media cuadra",
+      "fecha": "2026-02-19T19:36:25.266Z",
+      "estado": "pendiente"
     },
     {
-      "estado": "Resuelto",
-      "id": "6795"
+      "id": "c6d2",
+      "categoria": "Servicios Publicos",
+      "tipo": "Mantenimiento de Zonas Verdes",
+      "descripcion": "queremos mejoras en el parque el diamante",
+      "ubicacion": "Desamparados Villa nueva"
     }
   ],
   "proyectos": [
