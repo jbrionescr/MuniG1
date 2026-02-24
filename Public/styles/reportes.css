@@ -1,0 +1,40 @@
+/* Portal del ciudadano */
+.tituloreportes {
+    color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: black;
+    border-radius: 5cm;
+    border-color: aliceblue;
+    text-align: center;
+    
+}
+.text-gradient {
+text-align: start;
+}
+/* portal del ciudadano */
+.sidebar-nav {
+    background-color: aliceblue;
+    border-radius: 5cm;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+
+}
+
+.text-gradient {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.text1 {
+    text-align: center;
+    color: #12C9B4;
+  background-image: linear-gradient(45deg, #12C9B4, #74FC74 50%, #41CCC3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 320%;
+  
+  
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.report-form-section {
+    color: rgb(0, 9, 130);
+}
